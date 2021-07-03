@@ -1,0 +1,33 @@
+{
+  "name": "padhakku-web",
+  "version": "1.0.0",
+  "description": "Padhakku Ecommerce application",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harshit564/padhakku-web.git"
+  },
+  "author": "Padhakku",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Harshit564/padhakku-web/issues"
+  },
+  "homepage": "https://github.com/Harshit564/padhakku-web#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0",
+    "nodemon": "^2.0.9"
+  }
+}
