@@ -5,11 +5,11 @@ import FormContainer from '../components/FormContainer'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { savePaymentMethod } from '../actions/cartActions'
 
-export const PaymentScreen = ({ history }) => {
+const PaymentScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart)
   const { shippingAddress } = cart
 
-  if (!shippingAddress) {
+  if (!shippingAddress.address) {
     history.push('/shipping')
   }
 
@@ -20,7 +20,6 @@ export const PaymentScreen = ({ history }) => {
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(savePaymentMethod(paymentMethod))
-
     history.push('/placeorder')
   }
 
@@ -41,7 +40,6 @@ export const PaymentScreen = ({ history }) => {
               checked
               onChange={(e) => setPaymentMethod(e.target.value)}
             ></Form.Check>
-
             {/* <Form.Check
               type='radio'
               label='Stripe'
@@ -52,6 +50,7 @@ export const PaymentScreen = ({ history }) => {
             ></Form.Check> */}
           </Col>
         </Form.Group>
+
         <Button type='submit' variant='primary'>
           Continue
         </Button>

@@ -11,6 +11,7 @@ import { Fragment } from 'react'
 
 const UserEditScreen = ({ match, history }) => {
   const userId = match.params.id
+
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [isAdmin, setIsAdmin] = useState(false)
@@ -32,7 +33,7 @@ const UserEditScreen = ({ match, history }) => {
       dispatch({ type: USER_UPDATE_RESET })
       history.push('/admin/userlist')
     } else {
-      if (!user || !user.name || user._id !== userId) {
+      if (!user.name || user._id !== userId) {
         dispatch(getUserDetails(userId))
       } else {
         setName(user.name)
@@ -40,7 +41,7 @@ const UserEditScreen = ({ match, history }) => {
         setIsAdmin(user.isAdmin)
       }
     }
-  }, [user, dispatch, userId, history, successUpdate])
+  }, [dispatch, history, userId, user, successUpdate])
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -71,6 +72,7 @@ const UserEditScreen = ({ match, history }) => {
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
             </Form.Group>
+
             <Form.Group controlId='email'>
               <Form.Label>Email Address</Form.Label>
               <Form.Control
